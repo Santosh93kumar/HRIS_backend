@@ -4,7 +4,7 @@ let userSchema = new mongoose.Schema(
   {
     employeeFile: String,
   },
-  { timestamps: true } 
+  { timestamps: true }
 );
 
 let employeeImageModel = mongoose.model("EmployeeImage", userSchema);
