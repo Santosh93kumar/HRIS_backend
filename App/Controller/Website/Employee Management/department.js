@@ -1,7 +1,0 @@
-let department = (req,res)=>{
-    res.send("hello")
-    console.log(req.body)
-}
-
-
-module.export={department}
