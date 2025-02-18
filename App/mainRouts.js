@@ -24,6 +24,7 @@ mainRouts.use("/website/leaveentitlementroute",leaveentitlementroute)
 mainRouts.use("/website/leaveBalanceRoute",leaveBalanceRoute)
 
 
+
 // PAYROLL
 mainRouts.use("/website/payroll",allowDeductionRoutes)
 
@@ -31,6 +32,7 @@ mainRouts.use("/website/payroll",allowDeductionRoutes)
 // Employee Management
 mainRouts.use("/website/employeeInfoRoute",employeeInfoRoutes)
 mainRouts.use("/website/contactInfoRoute",contactInfoRoutes)
+
 
 
 
