@@ -1,7 +1,7 @@
-let myattendencereport=(req,res)=>{
-    res.send("hello")
-    
+let myattendencereport = (req, res) => {
+    res.send("hellooo")
+
     console.log(req.body)
 }
 
-module.exports={myattendencereport}
+module.exports = { myattendencereport }

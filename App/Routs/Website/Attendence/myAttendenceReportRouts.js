@@ -1,9 +1,14 @@
 let express = require("express");
+let myAttendenceReportRouts = express.Router();
+
+
+
 const { myattendencereport } = require("../../../Controller/Website/Attendence/myattendencereport");
+// const { punchIn } = require('../../../Controller/Website/Attendence/punchinpunchout');
 
 
 
-let myAttendenceReportRouts =express.Router();
-myAttendenceReportRouts.get('/myattendencereport',myattendencereport)
+myAttendenceReportRouts.get('/myattendencereport', myattendencereport);
+// myAttendenceReportRouts.post('/punchIn', punchIn);
 
-module.exports={myAttendenceReportRouts}
+module.exports = { myAttendenceReportRouts }
