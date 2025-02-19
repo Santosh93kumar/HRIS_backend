@@ -10,6 +10,7 @@ const { contactInfoRoutes } = require("./Routs/Website/Employee_Management/Conta
 const { departmentRoutes } = require("./Routs/Website/Employee_Management/DepartmentRoutes");
 const { designationRoutes } = require("./Routs/Website/Employee_Management/designationRoutes");
 const { dashboarDataRoutes } = require("./Routs/Website/dashboardDataRoutes");
+const { shiftRoutes } = require("./Routs/Website/ShiftSetup/CreateNewShift/shiftRoutes.js");
 
 
 
@@ -40,6 +41,9 @@ mainRouts.use("/website/employeeInfoRoute",employeeInfoRoutes)
 mainRouts.use("/website/contactInfoRoute",contactInfoRoutes)
 mainRouts.use("/website/departmentroutes",departmentRoutes)
 mainRouts.use("/website/designationroutes",designationRoutes)
+
+//shift setup
+mainRouts.use("/website/shift",shiftRoutes)
 
 
 
