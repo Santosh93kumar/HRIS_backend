@@ -6,7 +6,7 @@ let EmployeeInfo = async (req, res) => {
     console.log(req.file);
 
     let { name, gender, machineCode, dateOfBirth, streetAddress, city, postalCode, country } = req.body;
-    
+
     let employeeData = {
         name,
         gender,
@@ -45,4 +45,14 @@ let EmployeeInfo = async (req, res) => {
     }
 };
 
-module.exports = { EmployeeInfo };
+let getEmployees = async (req, res) => {
+    try {
+        const employees = await EmployeeModel.find();
+        res.json({ status: 1, employees: employees });
+    } catch (error) {
+        console.error("Error fetching employees:", error);
+        res.status(500).json({ status: 0, msg: "Internal server error" });
+    }
+};
+
+module.exports = { EmployeeInfo, getEmployees };
