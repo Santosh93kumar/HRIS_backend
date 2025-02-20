@@ -1,7 +1,8 @@
 const {mongoose} = require ("mongoose")
 
 let leaveEntrySchema = new mongoose.Schema(
-    {
+    {   
+        employeeType:String,
         leaveType:String,
         leavePeriod:String,
         leaveFromDate:String,

@@ -1,8 +1,11 @@
 let express = require("express")
-const { leaveEntry } = require("../../../Controller/Website/Leave/leaveentry")
+const { leaveEntry, getAllLeaveEntries } = require("../../../Controller/Website/Leave/leaveentry")
+const {  getAllEmployeeNames } = require("../../../Controller/Website/Employee_Management/EmployeeInfo")
 
 let leaveEntryRoutes = express.Router()
 
 leaveEntryRoutes.post("/leaveentry",leaveEntry)
+leaveEntryRoutes.get("/leaveentrydata",getAllEmployeeNames)
+leaveEntryRoutes.get("/leaveentryalldata",getAllLeaveEntries)
 
 module.exports={leaveEntryRoutes}
