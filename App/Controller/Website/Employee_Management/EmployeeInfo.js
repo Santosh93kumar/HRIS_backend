@@ -7,7 +7,18 @@ const EmployeeInfo = async (req, res) => {
     console.log("Request Body:", req.body);
     console.log("Uploaded File:", req.file);
 
-    const { name, gender, machineCode, dateOfBirth, streetAddress, city, postalCode, country } = req.body;
+    let { name, gender, machineCode, dateOfBirth, streetAddress, city, postalCode, country } = req.body;
+
+    let employeeData = {
+        name,
+        gender,
+        machineCode,
+        dateOfBirth,
+        streetAddress,
+        city,
+        postalCode,
+        country,
+    };
 
     if (!name || !gender) {
         return res.status(400).json({ status: 0, msg: "Name and gender are required fields." });
@@ -45,43 +56,14 @@ const EmployeeInfo = async (req, res) => {
     }
 };
 
-// Fetch only the Employee Name by ID
-const getAllEmployeeNames = async (req, res) => {
+let getEmployees = async (req, res) => {
     try {
-        // Fetch all employees and return only the 'name' field
-        const employees = await EmployeeModel.find().select("name");
-
-        if (!employees || employees.length === 0) {
-            return res.status(404).json({ status: 0, msg: "No employees found" });
-        }
-
-        // Extract names from employee objects
-        const employeeNames = employees.map(emp => emp.name);
-
-        return res.json({ status: 1, names: employeeNames });
-    } catch (error) {
-        console.error("Error fetching employee names:", error);
-        return res.status(500).json({ status: 0, msg: "Error fetching employee names" });
-    }
-};
-
-
-// Fetch All Employee Data
-const getAllEmployeesDetails = async (req, res) => {
-    try {
-        const employees = await EmployeeModel.find(); // Fetch all employee records
-
-        if (!employees || employees.length === 0) {
-            return res.status(404).json({ status: 0, msg: "No employees found" });
-        }
-
-        return res.json({ status: 1, employees });
+        const employees = await EmployeeModel.find();
+        res.json({ status: 1, employees: employees });
     } catch (error) {
         console.error("Error fetching employees:", error);
-        return res.status(500).json({ status: 0, msg: "Error fetching employees" });
+        res.status(500).json({ status: 0, msg: "Internal server error" });
     }
 };
 
-
-
-module.exports = { EmployeeInfo,getAllEmployeeNames, getAllEmployeesDetails };
+module.exports = { EmployeeInfo, getEmployees };

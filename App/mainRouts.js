@@ -6,7 +6,11 @@ const { myAttendenceReportRouts } = require("./Routs/Website/Attendence/myAttend
 const { leaveEntryRoutes } = require("./Routs/Website/Leave/leaveentryroutes");
 const { allowDeductionRoutes } = require("./Routs/Website/Payroll/allowDeductionTypeRoutes");
 const { employeeInfoRoutes } = require("./Routs/Website/Employee_Management/EmployeeInfoRoute")
-const { contactInfoRoutes } = require("./Routs/Website/Employee_Management/ContactInfoRoute");
+const { contactInfoRoutes } = require("./Routs/Website/Employee_Management/ContactInfoRoute")
+const { employementInfoRoutes } = require("./Routs/Website/Employee_Management/EmployementInfoRoute")
+const { payrollRoutes } = require("./Routs/Website/Employee_Management/payrollRoutes")
+const { securityRoutes } =require("./Routs/Website/Employee_Management/securityRoutes")
+// const { fileRoute } = require("./Routs/Website/Employee_Management/fileRoute")
 const { departmentRoutes } = require("./Routs/Website/Employee_Management/DepartmentRoutes");
 const { designationRoutes } = require("./Routs/Website/Employee_Management/designationRoutes");
 const { dashboarDataRoutes } = require("./Routs/Website/dashboardDataRoutes");
@@ -40,6 +44,10 @@ mainRouts.use("/website/payroll",allowDeductionRoutes)
 // Employee Management
 mainRouts.use("/website/employeeInfoRoute",employeeInfoRoutes)
 mainRouts.use("/website/contactInfoRoute",contactInfoRoutes)
+mainRouts.use("/website/employementInfoRoute",employementInfoRoutes)
+mainRouts.use("/website/payrollRoute",payrollRoutes)
+mainRouts.use("/website/securityRoute",securityRoutes)
+// mainRouts.use("/website/fileRoute",fileRoute)
 mainRouts.use("/website/departmentroutes",departmentRoutes)
 mainRouts.use("/website/designationroutes",designationRoutes)
 
