@@ -1,5 +1,5 @@
 let express = require("express");
-const { EmployeeInfo } = require("../../../Controller/Website/Employee_Management/EmployeeInfo");
+const { EmployeeInfo, getEmployeeInfo } = require("../../../Controller/Website/Employee_Management/EmployeeInfo");
 const { uploads } = require("../../../Middleware/Website/employeeFileUpload");
 
 let employeeInfoRoutes = express.Router();
@@ -10,5 +10,6 @@ employeeInfoRoutes.post(
     uploads('uploads/EmployeeInfoImage').single('profileImage'), 
     EmployeeInfo
 );
+employeeInfoRoutes.get('/getEmployeeInfo',getEmployeeInfo)
 
 module.exports = { employeeInfoRoutes };

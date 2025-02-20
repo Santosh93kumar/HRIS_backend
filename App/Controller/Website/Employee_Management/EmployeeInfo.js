@@ -45,4 +45,15 @@ let EmployeeInfo = async (req, res) => {
     }
 };
 
-module.exports = { EmployeeInfo };
+let getEmployeeInfo = async (req, res) => {
+    try {
+        const employees = await EmployeeModel.find();
+        res.send(employees);
+    } catch (error) {
+        console.error("Error retrieving employees:", error);
+        res.status(500).send("Error retrieving employees");
+    }
+}
+
+
+module.exports = { EmployeeInfo, getEmployeeInfo };

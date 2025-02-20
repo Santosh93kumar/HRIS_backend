@@ -1,35 +1,26 @@
 const {shiftModel} = require("../../../../Model/Website/ShiftSetup/CreateNewShift/shiftModel.js");
+const {EmployeeModel} = require("../../../../Model/Website/Employee_Management/Employee.js");
 
 const shiftController = {
+
   setShift: async (req, res) => {
    try{
     console.log(req.body);
-    const { shiftName,shiftIN, shiftOUT, ShiftOutNextDay } = req.body;
+    const { shiftName,assignedEmployee, shiftIn, shiftOut, ShiftOutNextDay } = req.body;
     
-
-    if (!shiftName || !ShiftOutNextDay){
-         return res.status(400).json({ status: 0, msg: "All fields are required."});
-      }
-      if(!shiftIN.hours || !shiftIN.minutes || !shiftIN.seconds || !shiftOUT.hours || !shiftOUT.minutes || !shiftOUT.seconds){
-        return res.status(400).json({ status: 0, msg: "All fields are required."});
-      }
-      const timeIn = shiftIN.hours + shiftIN.minutes  + shiftIN.seconds;
-      const timeout = shiftOUT.hours+ shiftOUT.minutes  + shiftOUT.seconds;
-      if(timeIn>timeout){ return res.status(400).json({ status: 0, msg: "Shift Out Time should be greater than Shift In Time."}); 
-    }
+    // if(!shiftName || !assignedEmployee || !shiftIn || !shiftOut || !ShiftOutNextDay){
+    //     return res.status(400).json({ status: 0, msg: "All required fields must be provided."});
+    // }
     
-
     //data
     
-    let savedShift = await shiftModel.create({ shiftName, shiftIN, shiftOUT, ShiftOutNextDay });
+    let savedShift = await shiftModel.create({ shiftName,assignedEmployee, shiftIn, shiftOut, ShiftOutNextDay });
 
     console.log("Shift details saved successfully:", savedShift);
     return res.status(201).json({ msg: "Shift details saved successfully."});
    }catch(error){
     console.error("Error saving shift details:", error);
-    return res
-      .status(500)
-      .json({ status: 0, msg: "Error occurred during shift creation." });
+    return res.status(500).json({ status: 0, msg: "Error occurred during shift creation." });
    }
 
   },
