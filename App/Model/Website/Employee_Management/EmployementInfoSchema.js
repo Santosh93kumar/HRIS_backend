@@ -20,6 +20,7 @@ let employementSchema = new mongoose.Schema(
     accountNo: { type: String },
     swiftCode: { type: String },
     cnic: { type: String },
+    profileName: {type: String},
   },
   { timestamps: true }
 );

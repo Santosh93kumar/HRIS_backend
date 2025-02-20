@@ -11,8 +11,6 @@ const { employementInfoRoutes } = require("./Routs/Website/Employee_Management/E
 const { payrollRoutes } = require("./Routs/Website/Employee_Management/payrollRoutes")
 const { securityRoutes } =require("./Routs/Website/Employee_Management/securityRoutes")
 // const { fileRoute } = require("./Routs/Website/Employee_Management/fileRoute")
-
-const { contactInfoRoutes } = require("./Routs/Website/Employee_Management/ContactInfoRoute");
 const { departmentRoutes } = require("./Routs/Website/Employee_Management/DepartmentRoutes");
 const { designationRoutes } = require("./Routs/Website/Employee_Management/designationRoutes");
 const { dashboarDataRoutes } = require("./Routs/Website/dashboardDataRoutes");

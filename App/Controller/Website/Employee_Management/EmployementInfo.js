@@ -6,13 +6,13 @@ let EmployementInfo = async (req, res) => {
   let { 
     hireDate, joiningDate, basicSalary, paymentMethod, employeeType, 
     bankName, accountTitle, location, designation, department, employeeCode, 
-    separationDate, status, branch, branchCode, accountNo, swiftCode, cnic 
+    separationDate, status, branch, branchCode, accountNo, swiftCode, cnic, profileName 
   } = req.body;
 
   let employeeData = {
     hireDate, joiningDate, basicSalary, paymentMethod, employeeType, 
     bankName, accountTitle, location, designation, department, employeeCode, 
-    separationDate, status, branch, branchCode, accountNo, swiftCode, cnic 
+    separationDate, status, branch, branchCode, accountNo, swiftCode, cnic, profileName 
   };
 
 
@@ -40,4 +40,14 @@ let EmployementInfo = async (req, res) => {
   }
 };
 
-module.exports = { EmployementInfo };
+let getEmployeement = async (req, res) => {
+  try {
+      const employees = await EmployementModel.find();
+      res.json({ status: 1, employees: employees });
+  } catch (error) {
+      console.error("Error fetching employees:", error);
+      res.status(500).json({ status: 0, msg: "Internal server error" });
+  }
+};
+
+module.exports = { EmployementInfo, getEmployeement };

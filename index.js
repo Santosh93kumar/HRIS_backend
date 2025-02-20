@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
+
 
 let mongoose = require("mongoose")
 const { mainRouts } = require("./App/mainRouts");
@@ -14,7 +16,7 @@ app.use(express.json());
 app.use(mainRouts);
 
 // Serve static files from 'uploads/EmployeeImage'
-app.use("/uploads/EmployeeImage", express.static("uploads/EmployeeImage"));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/uploads/BalanceImage", express.static("uploads/BalanceImage"));
 
 
