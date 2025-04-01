@@ -9,7 +9,8 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: [process.env.FRONTEND_URL,"https://hris-frontend-l064.onrender.com"],
+
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Referrer-Policy"],
